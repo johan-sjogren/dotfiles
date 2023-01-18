@@ -26,10 +26,36 @@ YELLOW='\e[1;33m'
 WHITE='\e[1;37m'
 NC='\e[0m'              # No Color
 
+# WELCOME SCREEN
+#######################################################
+
+clear
+echo -e ${LIGHTBLUE} "Kernel Information: " `uname -smr`;
+echo -e ${LIGHTBLUE}`bash --version`;echo ""
+echo -ne "${LIGHTPURPLE}" "Greetings, $USER. Todays date and time is, "; date
+echo -e "${NC}"; cal ;  
+echo -ne "${CYAN}";
+echo -ne "${GREEN}Sysinfo:";uptime ;
+#echo -ne "${LIGHTGREEN}" ; uname -sro
+echo -ne ${NC} "Terminal ready"; echo ""
+
+
+#####Prompt##########
+#####Some of these fucks up the line wrapping.
+PS1="\033[1;37m\]\u@\h\033[1;0m\]>"
+
+
+### LS coloring ###
+eval "$(dircolors -b)"
+export LS_COLORS=$LS_COLORS:'di=1;36:'
+
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
 source /usr/share/bash-completion/completions/git
+
 ####Shortcuts#######
 alias ls='ls --color=auto'
 alias sl='ls'
@@ -57,6 +83,8 @@ alias mkex='chmod a+x'
 ####Paths######
 # added by Miniconda3 installer
 #export PATH="/home/johan/miniconda3/bin:$PATH"
+# Path for Lunarvim
+export PATH="/home/johan/.local/bin:$PATH"
 
 # added by Anaconda3 installer
 # export PATH="/home/johan/anaconda3/bin:$PATH"  # commented out by conda initialize
@@ -66,19 +94,6 @@ alias mkex='chmod a+x'
 
 # add SQl server tools to path
 # export PATH="$PATH:/opt/mssql-tools/bin"
-
-# WELCOME SCREEN
-#######################################################
-
-clear
-echo -e ${LIGHTBLUE} "Kernel Information: " `uname -smr`;
-echo -e ${LIGHTBLUE}`bash --version`;echo ""
-echo -ne "${LIGHTPURPLE}" "Greetings, $USER. Todays date and time is, "; date
-echo -e "${NC}"; cal ;  
-echo -ne "${CYAN}";
-echo -ne "${BLUE}Sysinfo:";uptime ;
-#echo -ne "${LIGHTGREEN}" ; uname -sro
-echo -ne ${NC} "Terminal ready"; echo ""
 
 
 ####Functions#####
@@ -214,15 +229,6 @@ function lls () {
     fi
 }
 
-#####Prompt##########
-#####Some of these fucks up the line wrapping.
-#PS1="\e[0;33m\e[34m\u@\h \w> \e[m"
-#PS1="\e[34m\u@\h \w> \e[m"
-#PS1="\[[34m\][\[[31m\]\u\[[34m\]]\[[32m\]\w > \[[39m\]"
-#PS1="\[\033[1;34m\](\[\033[1;37m\]\w\[\033[1;34m\]) \[\033[1;32m\]*\[\033[1;0m\]"
-#PS1="\[\033[1;34m\](\[\033[1;37m\]\u@\h\w>\[\033[1;34m\])\[\033[1;0m\]"
-#PS1="\[\033[1;34m\](\[\033[1;37m\]\u@\h\[\033[1;34m\])\[\033[1;0m\]\w> "
-PS1="\[\033[1;34m\](\[\033[1;37m\]\u@\h\[\033[1;34m\])\[\033[1;0m\]> "
 
 
 # The next line updates PATH for the Google Cloud SDK.
