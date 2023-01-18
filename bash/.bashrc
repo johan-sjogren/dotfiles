@@ -42,7 +42,8 @@ echo -ne ${NC} "Terminal ready"; echo ""
 
 #####Prompt##########
 #####Some of these fucks up the line wrapping.
-PS1="\033[1;37m\]\u@\h\033[1;0m\]>"
+# PS1="\033[1;37m\]\u@\h\033[1;0m\]>"
+PS1="\[\033[1;34m\](\[\033[1;37m\]\u@\h\[\033[1;34m\])\[\033[1;0m\]> "
 
 
 ### LS coloring ###
